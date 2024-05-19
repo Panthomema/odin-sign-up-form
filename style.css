@@ -2,6 +2,8 @@
   *,
   *::before,
   *::after {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
   }
 
@@ -15,6 +17,16 @@
   textarea,
   select {
     font: inherit;
+  }
+
+  a, 
+  a:visited {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  fieldset {
+    border: none;
   }
 
   img,
@@ -38,6 +50,172 @@
   }
 }
 
+@font-face {
+  font-family: 'norsebold';
+  src: url('assets/fonts/norse-bold/norse-bold-webfont.woff2') format('woff2'),
+       url('assets/fonts/norse-bold/norse-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+:root {
+  --system-ui: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, 
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --leaf-green: #596D48;
+  --branch-brown: #D3B55B;
+}
+
+html {
+  font-size: 16px;
+}
+
 /* Layout */
 
-#wrapper
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+#wrapper {
+  flex: 1;
+  display: flex;
+  font-family: var(--system-ui);
+}
+
+header  {
+  flex: 1;
+  background: url('./assets/images/leaves-image.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  color: #eee;
+}
+
+header div {
+  height: auto;
+  width: 100%;
+  position: absolute;
+  top: 25%;
+  background: hwb(0 0% 100% / 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2% 0;
+}
+
+img {
+  height: calc(4rem + 3vw);
+}
+
+header h1 {
+  font-family: norsebold;
+  font-size: calc(3rem + 3vw);
+}
+
+header p {
+  position: absolute;
+  bottom: clamp(8px, 1.5%, 16px);
+  width: 100%;
+  text-align: center;
+  font-size: calc(0.35rem + 0.5vw);
+}
+
+header a {
+  text-decoration: underline;
+}
+
+header a:visited {
+  color: #ccc;
+}
+
+header a:hover {
+  color: #fff;
+}
+
+header a:active {
+  color: var(--branch-brown);
+}
+
+main {
+  flex: 2;
+  display: flex;
+  background: #f8f8f8;
+}
+
+main > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5%
+}
+
+main p,
+fieldset {
+  padding-left: 4%;
+}
+
+main p,
+legend {
+  font-size: calc(0.65em + 0.4vw);
+  font-weight: 500;
+  max-inline-size: 59ch;
+  line-height: 1.3;
+  word-spacing: 0.1em;
+}
+
+
+fieldset:first-of-type {
+  background: #fff;
+  box-shadow: 0 0.25em 0.5em rgba(204, 204, 204, 0.75);
+  position: relative;
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+  padding-right: 8vw;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10%;
+}
+
+legend {
+  position: absolute;
+  top: 1rem;
+}
+
+fieldset div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: calc(0.5rem + 0.2vh) 0;
+  
+}
+
+label {
+  font-size: calc(0.25rem + 0.4dvw);
+  font-weight: 600;
+  letter-spacing: 0.05rem;
+  word-spacing: 0.1rem;
+  color: #444;
+}
+
+input {
+  width: calc(10em + 5dvw);
+}
+
+
+
+@media only screen and (max-width: 768px) {
+  #wrapper {
+    flex-direction: column;
+  }
+
+  header {
+    flex: 0 0 60dvh;
+  }
+
+  main {
+    flex: 1;  
+  }
+}
+
