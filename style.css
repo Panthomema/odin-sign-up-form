@@ -154,7 +154,8 @@ main > div {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 5%
+  gap: calc(2rem + 1vw);
+  padding: calc(1.5rem + 1vw) 0;
 }
 
 #message {
@@ -276,8 +277,6 @@ button[type=submit]:active {
   color: var(--leaf-yellow);
 }
 
-
-
 @media only screen and (max-width: 768px) {
   #wrapper {
     flex-direction: column;
@@ -289,6 +288,10 @@ button[type=submit]:active {
 
   main {
     flex: 1;  
+  }
+
+  #message {
+    padding-right: 4%;
   }
 }
 
