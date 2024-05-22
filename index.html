@@ -31,32 +31,95 @@
           <br>
           You know you want to.
         </p>
-        <form action="#" method="get">
+        <form action="#" method="get" novalidate>
           <fieldset>
             <legend>Let's do this!</legend>
             <div>
               <label for="first-name">FIRST NAME</label>
-              <input type="text" name="first-name" id="first-name" minlength="1" maxlength="50" pattern="[a-zA-z\s]*"/>
+              <input type="text"
+                     name="first-name" 
+                     id="first-name"
+                     minlength="2" 
+                     maxlength="50" 
+                     pattern="(?!.*[\s\-']{2,})\p{L}[\p{L}\s\-']*[\p{L}']"
+                     required/>
+              <!--
+                Validates any language characters,with 1 space, hyphen or
+                apostrophe as word separator, permitting apostrophes to be at
+                the end of a word aswell. Btw, name validation is an ethical
+                conflict itself
+              -->
             </div>
             <div>
               <label for="last-name">LAST NAME</label>
-              <input type="text" name="last-name" id="last-name" />
+              <input type="text" 
+                     name="last-name" 
+                     id="last-name" 
+                     minlength="2" 
+                     maxlength="50" 
+                     pattern="(?!.*[\s\-']{2,})\p{L}[\p{L}\s\-']*[\p{L}']"/>
+              <!--
+                Validates any language characters,with 1 space, hyphen or
+                apostrophe as word separator, permitting apostrophes to be at
+                the end of a word aswell. Btw, name validation is an ethical
+                conflict
+              -->
             </div>
             <div>
               <label for="email">EMAIL</label>
-              <input type="email" name="email" id="email" />
+              <input type="email"
+                     name="email" 
+                     id="email" 
+                     minlength="3" 
+                     maxlength="254" 
+                     pattern="(?!.*\.{2,})[\w.%+\-!$&`&#39&#34*+\/=?^\{\}\|~]{1,64}@[a-zA-Z\-\.]{1,64}\.[a-zA-Z]{2,}"
+                     required/>
+              <!--
+                Validates email addresses. Local part follows the RFC 6531,
+                missing some conditions like non permitting the use of
+                some kind of characters consecutively. Btw, domain part is
+                pretty straightforward, non contemplating multilingual domains.
+                At the end of the day, domain validation is a complicated 
+                problem nowadays. Should use external complex libraries for
+                validation, not this regex pattern
+              -->
             </div>
             <div>
               <label for="phone-number">PHONE NUMBER</label>
-              <input type="text" name="phone-number" id="phone-number" />
+              <input type="text"
+                     name="phone-number" 
+                     id="phone-number"  
+                     minLength="8"
+                     maxlength="18" 
+                     pattern="[+]{1}(?:[0-9\-\(\)\/\.]\s?){6,15}[0-9]{1,}"/>
+              <!--
+                Validates phone numbers worldwide. I took this one directly from
+                Phind AI. Problem is the same as email/domain validation:
+                so many complex patterns that need to be treated independently
+                (by a specialized library). Other option would be just split the 
+                input into 2, requiring the country code and the remaining 
+                digits. We could vary the regex depending on the country code
+              -->
             </div>
             <div>
               <label for="password">PASSWORD</label>
-              <input type="password" name="password" id="password" />
+              <input type="password" 
+                     name="password" 
+                     id="password"
+                     minlength="6"
+                     maxlength="64" 
+                     pattern="?:(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,64}"
+                     required />
+              <!--
+                Validates somely safe passwords. Requires the user to enter
+                at least a digit, an uppercase and a lowercase letter.
+                Kind of doubtful about using .{n, N}, allowing any character.
+                I'm just lazy
+              -->
             </div>
             <div>
               <label for="password-confirm">CONFIRM PASSWORD</label>
-              <input type="password" name="password-confirm" id="password-confirm" />
+              <input type="password" name="password-confirm" id="password-confirm" required />
             </div>
           </fieldset>
           

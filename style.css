@@ -30,6 +30,10 @@
     border: none;
   }
 
+  :focus {
+    outline: 0;
+  }
+
   img,
   picture,
   svg,
@@ -219,19 +223,25 @@ fieldset div {
 label {
   font-size: 0.5em;
   font-weight: 600;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
   word-spacing: 0.1em;
   color: #444;
 }
 
 input {
   --border-color: #e5e7eb;
+  --border-focus: #3838df;
   font-size: 0.75em;
   padding: 0.4em;
   width: var(--input-width);
   height: 2.5em;
   border: clamp(2px, 0.25em, 3px) solid var(--border-color);
   border-radius: 0.25em;
+}
+
+input:focus {
+  border-color: var(--border-focus);
+  box-shadow: var(--highlight-shadow);
 }
 
 #form-actions {
