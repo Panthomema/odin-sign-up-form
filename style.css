@@ -215,6 +215,9 @@ legend {
 }
 
 fieldset div {
+  --border-color: #e5e7eb;
+  --focus-color: #3838df;
+  --invalid-color: #e43333;
   display: flex;
   flex-direction: column;
   gap: 0.1em;
@@ -229,8 +232,6 @@ label {
 }
 
 input {
-  --border-color: #e5e7eb;
-  --border-focus: #3838df;
   font-size: 0.75em;
   padding: 0.4em;
   width: var(--input-width);
@@ -240,8 +241,27 @@ input {
 }
 
 input:focus {
-  border-color: var(--border-focus);
+  border-color: var(--focus-color);
   box-shadow: var(--highlight-shadow);
+}
+
+/*
+input:user-invalid {
+  border-color: var(--invalid-color);
+}
+*/
+
+.invalid {
+  border-color: var(--invalid-color);
+}
+
+.error {
+  --padding-top: 0.1em;
+  --font-size: 0.55em;
+  padding-top: var(--padding-top);
+  font-size: var(--font-size);
+  height: calc(var(--font-size) + var(--padding-top));
+  color: var(--invalid-color);
 }
 
 #form-actions {
