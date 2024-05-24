@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }),
     passwordConfirm: new InputValidator('#password-confirm', 
     {
-      'required': 'Confirm your password',
+      'valueMissing': '* Confirm your password',
       'passwordMismatch': '* Passwords do not match'
     })
   };  
