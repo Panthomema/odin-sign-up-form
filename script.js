@@ -66,9 +66,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
   /* 
-    Filter now just the passwor InputValidator, cause in this case i actually
+    Filter now just the password InputValidator, cause in this case i actually
     want passwordConfirm to perform default validation (if not, submitting a 
-    corect form with an empty confirm password, wouldn't show any error, due to
+    correct form with an empty confirm password, wouldn't show any error, due to
     how PasswordConfirmValidator.checkValidity() performs validation)
   */
 
