@@ -57,13 +57,13 @@ document.addEventListener('DOMContentLoaded', () => {
     */
 
     Object.entries(inputValidators)
-    .filter(([name, _]) => /password/.test(name))
-    .forEach(([_, validator]) => {
+      .filter(([name, _]) => /password/.test(name))
+      .forEach(([_, validator]) => {
 
-      validator.input.addEventListener('blur', event => {
-        passwordValidator.checkValidity();
+        validator.input.addEventListener('blur', event => {
+          passwordValidator.checkValidity();
+        });
       });
-    });
 
   /* 
     Filter now just the password InputValidator, cause in this case i actually
