@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
   Object.entries(inputValidators)
     .filter(([name, _]) => !/password/.test(name))
     .forEach(([_, validator]) => {
-      validator.input.addEventListener('blur', event => {
+      validator.input.addEventListener('blur', () => {
 
         if (!validator.input.checkValidity()) {
           validator.showError();
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .filter(([name, _]) => /password/.test(name))
       .forEach(([_, validator]) => {
 
-        validator.input.addEventListener('blur', event => {
+        validator.input.addEventListener('blur', () => {
           passwordValidator.checkValidity();
         });
       });
